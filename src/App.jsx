@@ -1,18 +1,18 @@
-
+import { Routes, Route } from 'react-router-dom'
+import Navbar from "./components/Navbar";
+import DetailHero from './pages/DetailHero';
+import Home from "./pages/Home";
 
 function App() {
-
   return (
-    <div className="App bg-primary text-secundary">
-      h1
-      <div className="figure font-beba text-4xl">
-        hellow koala
-      </div>
-      <div className="figure2">
-        loreidnefneif oaiahiduha awdiuauw bcuibwiua
-      </div>
+    <div className="App min-h-screen bg-primary text-secundary">
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='detail' element={<DetailHero/>}/>
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
