@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import herosReducer from "../features/heros/HerosSlice";
+import { herosApi }  from './services/HerosApi'
 
 export const store = configureStore({
   reducer: {
-    heros: herosReducer
-  }
+    [herosApi.reducerPath]: herosApi.reducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(herosApi.middleware),
 });

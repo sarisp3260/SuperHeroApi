@@ -7,34 +7,34 @@ import {
 } from "react-icons/gi";
 import { BiTimer } from "react-icons/bi";
 
-const PowerStats = () => {
+const PowerStats = ({data}) => {
   return (
     <div className="flex flex-wrap items-center justify-center gap-4 md:flex-col">
   
         <section className="pb-3 md:p-2 ">
-          <div className="tooltip tooltip-bottom md:tooltip-right tooltip-warning duration-500" data-tip="Inteligence">
+          <div className="tooltip tooltip-bottom md:tooltip-right tooltip-warning duration-500" data-tip="Intelligence">
             <div className="flex gap-3 items-center">
               <FaBrain />
               <progress
                 class="progress progress-warning w-28"
-                value="90"
+                value={data.powerstats.intelligence}
                 max="100"
               ></progress>
-              <span>90%</span>
+              <span>{data.powerstats.intelligence}%</span>
             </div>
           </div>
         </section>
 
         <section className="pb-3 md:p-2 ">
-          <div className="tooltip tooltip-bottom md:tooltip-right tooltip-warning duration-500 " data-tip="Duration">
+          <div className="tooltip tooltip-bottom md:tooltip-right tooltip-warning duration-500 " data-tip="Durability">
             <div className="flex gap-3 items-center">
               <BiTimer />
               <progress
                 class="progress progress-warning w-28"
-                value="90"
+                value={data.powerstats.durability}
                 max="100"
               ></progress>
-              <span>90%</span>
+              <span>{data.powerstats.durability}%</span>
             </div>
           </div>
         </section>
@@ -45,10 +45,10 @@ const PowerStats = () => {
               <GiRunningNinja />
               <progress
                 class="progress progress-warning w-28"
-                value="90"
+                value={data.powerstats.speed}
                 max="100"
               ></progress>
-              <span>90%</span>
+              <span>{data.powerstats.speed}%</span>
             </div>
           </div>
         </section>
@@ -59,10 +59,10 @@ const PowerStats = () => {
               <GiMuscleUp />
               <progress
                 class="progress progress-warning w-28"
-                value="90"
+                value={data.powerstats.strength}
                 max="100"
               ></progress>
-              <span>90%</span>
+              <span>{data.powerstats.strength}%</span>
             </div>
           </div>
         </section>
@@ -73,10 +73,10 @@ const PowerStats = () => {
               <GiPunch />
               <progress
                 class="progress progress-warning w-28"
-                value="90"
+                value={data.powerstats.power}
                 max="100"
               ></progress>
-              <span>90%</span>
+              <span>{data.powerstats.power}%</span>
             </div>
           </div>
         </section>
@@ -87,10 +87,10 @@ const PowerStats = () => {
               <GiSwordsPower />
               <progress
                 class="progress progress-warning w-28"
-                value="40"
+                value={data.powerstats.combat}
                 max="100"
               ></progress>
-              <span>40%</span>
+              <span>{data.powerstats.combat}%</span>
             </div>
           </div>
         </section>

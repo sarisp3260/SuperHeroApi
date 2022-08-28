@@ -18,6 +18,9 @@ module.exports = ({
 
       fontFamily:{
         'beba': ['Bebas Neue']
+      },
+      backgroundImage: {
+        'hero': "url('/src/assets/b-1.jpg')",
       }
     },
   },
