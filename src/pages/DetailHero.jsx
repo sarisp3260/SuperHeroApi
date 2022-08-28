@@ -9,7 +9,6 @@ const DetailHero = () => {
   const { heroId } = useParams();
 
   const { data, isLoading } = useGetOneIdQuery(heroId);
-  console.log(data)
   const navigate = useNavigate();
 
   return (

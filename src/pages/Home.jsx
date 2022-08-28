@@ -15,7 +15,6 @@ const Home = () => {
 
   const [filterPower, setFilterPower] = useState([]);
   const [category, setCategory] = useState("");
-  console.log(category)
   const powerCategory = ["intelligence","strenght","speed","durability","power","combat"];
 
   const [currentItems, setCurrentItems] = useState([]);
@@ -55,7 +54,6 @@ const Home = () => {
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data?.length;
-    console.log(event);
     setItemOffset(newOffset);
   };
 
@@ -80,7 +78,7 @@ const Home = () => {
           {search == "" &&
           <div className="flex-center gap-4 flex-wrap">
             {powerCategory.map((power) =>(
-              <button className={`btn btn-warning text-xs ${category === power ? "btn-warning" : "btn-outline"}`} onClick={()=>setCategory(power)}>{power}</button>
+              <button key={power} className={`btn btn-warning text-xs ${category === power ? "btn-warning" : "btn-outline"}`} onClick={()=>setCategory(power)}>{power}</button>
             ))}
           </div>}
           <ReactPaginate

@@ -16,7 +16,7 @@ const PowerStats = ({data}) => {
             <div className="flex gap-3 items-center">
               <FaBrain />
               <progress
-                class="progress progress-warning w-28"
+                className="progress progress-warning w-28"
                 value={data.powerstats.intelligence}
                 max="100"
               ></progress>
@@ -30,7 +30,7 @@ const PowerStats = ({data}) => {
             <div className="flex gap-3 items-center">
               <BiTimer />
               <progress
-                class="progress progress-warning w-28"
+                className="progress progress-warning w-28"
                 value={data.powerstats.durability}
                 max="100"
               ></progress>
@@ -44,7 +44,7 @@ const PowerStats = ({data}) => {
             <div className="flex gap-3 items-center">
               <GiRunningNinja />
               <progress
-                class="progress progress-warning w-28"
+                className="progress progress-warning w-28"
                 value={data.powerstats.speed}
                 max="100"
               ></progress>
@@ -58,7 +58,7 @@ const PowerStats = ({data}) => {
             <div className="flex gap-3 items-center">
               <GiMuscleUp />
               <progress
-                class="progress progress-warning w-28"
+                className="progress progress-warning w-28"
                 value={data.powerstats.strength}
                 max="100"
               ></progress>
@@ -72,7 +72,7 @@ const PowerStats = ({data}) => {
             <div className="flex gap-3 items-center">
               <GiPunch />
               <progress
-                class="progress progress-warning w-28"
+                className="progress progress-warning w-28"
                 value={data.powerstats.power}
                 max="100"
               ></progress>
@@ -86,7 +86,7 @@ const PowerStats = ({data}) => {
             <div className="flex gap-3 items-center">
               <GiSwordsPower />
               <progress
-                class="progress progress-warning w-28"
+                className="progress progress-warning w-28"
                 value={data.powerstats.combat}
                 max="100"
               ></progress>

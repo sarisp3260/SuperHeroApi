@@ -26,11 +26,11 @@ const Documentation = () => {
       <div className="flex-center">
         <a
           href="#Documentation"
-          class="relative w-fit font-beba inline-block px-4 py-2 text-2xl font-bold group"
+          className="relative w-fit font-beba inline-block px-4 py-2 text-2xl font-bold group"
         >
-          <span class="absolute rounded-md inset-0 w-full h-full transition duration-500 ease-in-out transform translate-x-1 translate-y-1 bg-orange400 animate-pulse group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-          <span class="absolute rounded-md inset-0 w-full h-full bg-orange-100 border-2 border-orange400 group-hover:bg-orange700"></span>
-          <span class="relative text-orange400 group-hover:text-white">
+          <span className="absolute rounded-md inset-0 w-full h-full transition duration-500 ease-in-out transform translate-x-1 translate-y-1 bg-orange400 animate-pulse group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+          <span className="absolute rounded-md inset-0 w-full h-full bg-orange-100 border-2 border-orange400 group-hover:bg-orange700"></span>
+          <span className="relative text-orange400 group-hover:text-white">
             Check it out
           </span>
         </a>
