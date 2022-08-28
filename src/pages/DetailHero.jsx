@@ -3,6 +3,7 @@ import { useGetOneIdQuery } from "../app/services/HerosApi";
 import HeroStats from "../components/HeroStats";
 import IsLoading from "../components/IsLoading";
 import { RiArrowGoBackFill } from "react-icons/ri";
+import FilterApperance from "../components/FilterApperance";
 
 const DetailHero = () => {
   const { heroId } = useParams();
@@ -17,7 +18,7 @@ const DetailHero = () => {
       {data && <HeroStats data={data} />}
 
       {data && (
-        <div className="w-full md:w-5/6 px-10">
+        <div className="w-full md:w-4/6 xl:w-5/6 pb-6 px-10">
           <div className="flex justify-end md:justify-between pb-5">
             <span className="hidden md:block text-5xl font-beba">
               {data.name}
@@ -31,35 +32,13 @@ const DetailHero = () => {
             </button>
           </div>
 
-          <div className="grid place-items-center text-center gap-10 grid-cols-1 md:grid-cols-2 md:pb-20">
-            <div className="flex flex-col gap-3 py-4">
-              <h2 className="font-beba text-orange700 text-3xl">Appearance</h2>
-              <div className="flex items-center justify-center flex-wrap gap-5 text-xl">
-                <span>
-                  <strong>Gender: </strong>
-                  {data?.appearance.gender}
-                </span>
-                <span>
-                  <strong>Race: </strong> {data?.appearance.race}
-                </span>
-                <span>
-                  <strong>Weight:</strong> {data?.appearance.weight[1]}
-                </span>
-                <span>
-                  <strong>height:</strong> {data?.appearance.height[1]}
-                </span>
-                <span>
-                  <strong>Hair Color:</strong> {data?.appearance.hairColor}
-                </span>
-                <span>
-                  <strong>Eye Color:</strong> {data?.appearance.eyeColor}
-                </span>
-              </div>
-            </div>
+          <FilterApperance data={data}/>
+
+          <div className="grid text-center gap-5 md:gap-10 grid-cols-1 lg:grid-cols-3 pt-5">
 
             <div className="flex flex-col gap-3 py-4">
               <h2 className="font-beba text-orange700 text-3xl">Biography</h2>
-              <div className="flex  items-center justify-center flex-wrap gap-5 text-xl">
+              <div className="flex  items-center flex-col flex-wrap gap-5 text-xl">
                 <span>
                   <strong>Alter Egos: </strong>
                   {data?.biography.alterEgos}
@@ -77,25 +56,10 @@ const DetailHero = () => {
                 </span>
               </div>
             </div>
-          </div>
-
-          <div className="grid place-items-center text-center gap-10 grid-cols-1 md:grid-cols-2">
-            <div className="flex flex-col gap-3 py-4">
-              <h2 className="font-beba text-orange700 text-3xl">Conections</h2>
-              <div className="flex  items-center justify-center flex-wrap gap-5 text-xl">
-                <span>
-                  <strong>Group Affiliation: </strong>
-                  {data?.connections.groupAffiliation}
-                </span>
-                <span>
-                  <strong>Relatives: </strong> {data?.connections.relatives}
-                </span>
-              </div>
-            </div>
 
             <div className="flex flex-col gap-3 py-4">
               <h2 className="font-beba text-orange700 text-3xl">Work</h2>
-              <div className="flex  items-center justify-center flex-wrap gap-5 text-xl">
+              <div className="flex  items-center flex-col flex-wrap gap-5 text-xl">
                 <span>
                   <strong>Base: </strong>
                   {data?.work.base}
@@ -105,6 +69,20 @@ const DetailHero = () => {
                 </span>
               </div>
             </div>
+
+            <div className="flex flex-col gap-3 py-4">
+              <h2 className="font-beba text-orange700 text-3xl">Conections</h2>
+              <div className="flex items-center flex-col flex-wrap gap-5 text-xl">
+                <span>
+                  <strong>Group Affiliation: </strong>
+                  {data?.connections.groupAffiliation}
+                </span>
+                <span>
+                  <strong>Relatives: </strong> {data?.connections.relatives}
+                </span>
+              </div>
+            </div>
+            
           </div>
         </div>
       )}

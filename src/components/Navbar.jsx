@@ -19,9 +19,9 @@ const Navbar = () => {
         <h1 className="Logo flex-center text-2xl flex items-center font-extrabold font-beba"><FaDragon className=""/>uper<span className="text-orange900">Heros</span></h1>
       </Link>
       <div className='hidden md:flex w-1/4 justify-between text-xl font-beba'>
-        <Link className='hover:text-orange900 duration-300' to='/home'>Home</Link>
         <Link className='hover:text-orange900 duration-300' to='/'>About</Link>
-        <a className='hover:text-orange900 duration-300' href='https://www.superheroapi.com/index.html' target='_blank'>Api</a>
+        <Link className='hover:text-orange900 duration-300' to='/Search'>Search</Link>
+        <a className='hover:text-orange900 duration-300' href='https://akabab.github.io/superhero-api/api/' target='_blank'>Api</a>
       </div>
 
       <span className='hidden md:block text-xl animate-pulse'><GiDragonHead/></span>
@@ -35,9 +35,9 @@ const Navbar = () => {
       {show &&
         (
           <div className='absolute top-11 w-full bg-primary/80 flex flex-col justify-center items-center text-xl font-beba py-5 z-50 md:hidden'>
-            <Link className='hover:text-orange900 duration-300' to='/home'>Home</Link>
             <Link className='hover:text-orange900 duration-300' to='/'>About</Link>
-            <a className='hover:text-orange900 duration-300' href='https://www.superheroapi.com/index.html' target='_blank'>Api</a>
+            <Link className='hover:text-orange900 duration-300' to='/Search'>Search</Link>
+            <a className='hover:text-orange900 duration-300' href='https://akabab.github.io/superhero-api/api/' target='_blank'>Api</a>
           </div>
         )
       }

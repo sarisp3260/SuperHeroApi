@@ -4,41 +4,57 @@ import CardHero from "../components/CardHero";
 import IsLoading from "../components/IsLoading";
 import Searcher from "../components/Searcher";
 import ReactPaginate from "react-paginate";
+import mush from '../assets/mush-3.gif'
 
 const Home = () => {
   const { data, error, isLoading } = useGetAllQuery();
 
   const [filtered, setFiltered] = useState(data);
-  /* console.log("fil",filtered)
-  console.log(data) */
 
   const [search, setSearch] = useState("");
+
+  const [filterPower, setFilterPower] = useState([]);
+  const [category, setCategory] = useState("");
+  console.log(category)
+  const powerCategory = ["intelligence","strenght","speed","durability","power","combat"];
 
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 6;
+  const itemsPerPage = 10;
 
-  useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(filtered.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(filtered.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, filtered]);
-
+  
   useEffect(() => {
     if (search !== "") {
       setFiltered(
         data.filter((heros) =>
-          heros.name.toLowerCase().includes(search.toLowerCase())
+        heros.name.toLowerCase().includes(search.toLowerCase())
         )
-      );
-    } else {
-      setFiltered(data);
-    }
-  }, [search, data]);
+        );
+      } else {
+        setFiltered(data);
+      }
+    }, [search, data]);
+
+  /* useEffect(() => {
+    if (filterPower != []) {
+      console.log(
+        data?.map((h)=>h.powerstats).filter((heros) =>
+        heros.category
+        ))
+      } else {
+        setFilterPower(data);
+      }
+    }, [filterPower, data]); */
+    
+    useEffect(() => {
+      const endOffset = itemOffset + itemsPerPage;
+      setCurrentItems(filtered?.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(filtered?.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, filtered]);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % data.length;
+    const newOffset = (event.selected * itemsPerPage) % data?.length;
     console.log(event);
     setItemOffset(newOffset);
   };
@@ -46,7 +62,44 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center py-6">
       <div className="w-10/12">
-        <Searcher />
+        <Searcher search={search} setSearch={setSearch}/>
+
+
+        {search != "" || filtered?.length == 0 ?
+          <span className="flex-center">{filtered?.length} Heros found</span>:null
+        }
+
+        {filtered?.length == 0 &&
+          <div className="flex-center gap-3 flex-col md:flex-row">
+            <img src={mush} alt="mush" className="w-32"/>
+            <span className="text-xl">Hero not found, try again</span>
+          </div>
+        }
+
+        <div className={`flex items-center flex-col lg:flex-row ${search == "" ? "justify-between": "justify-end"}`}>
+          {search == "" &&
+          <div className="flex-center gap-4 flex-wrap">
+            {powerCategory.map((power) =>(
+              <button className={`btn btn-warning text-xs ${category === power ? "btn-warning" : "btn-outline"}`} onClick={()=>setCategory(power)}>{power}</button>
+            ))}
+          </div>}
+          <ReactPaginate
+          previousLabel={"Prev"}
+          nextLabel={"Next"}
+          breakLabel={"..."}
+          pageCount={pageCount}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={1}
+          onPageChange={handlePageClick}
+          renderOnZeroPageCount={null}
+          //styling
+          containerClassName="flex items-center justify-center md:justify-end gap-2 py-6"
+          pageClassName="btn btn-ghost hover:btn-warning text-xs duration-500"
+          previousLinkClassName="btn btn-ghost hover:btn-warning text-xs duration-500"
+          nextLinkClassName="btn btn-ghost hover:btn-warning text-xs duration-500"
+          activeLinkClassName="text-white"
+          />
+        </div>
 
         {error && (
           <div className="flex-center gap-3 text-2xl">
@@ -56,23 +109,12 @@ const Home = () => {
         )}
         {isLoading && <IsLoading />}
 
-        <div className="grid gap-10 place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-          {data?.map((hero) => {
+        <div className="grid gap-10 place-items-center grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {currentItems?.map((hero) => {
             return <CardHero key={hero.id} hero={hero} />;
           })}
         </div>
       </div>
-
-      <ReactPaginate
-        previousLabel={"Anterior"}
-        nextLabel={"Siguiente"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={3}
-        onPageChange={handlePageClick}
-        renderOnZeroPageCount={null}
-      />
     </div>
   );
 };
