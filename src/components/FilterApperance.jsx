@@ -13,11 +13,11 @@ const FilterApperance = ({data}) => {
   ];
 
   return (
-    <div className="w-full h-fit bg-orange400/30 rounded-lg flex-center flex-col gap-4 px-2 py-4">
+    <div className="w-full md:w-1/2 h-fit bg-orange400/30 rounded-lg flex-center flex-col gap-4 px-2 py-4">
       <h1 className="font-beba text-white text-2xl">Filter Appearance</h1>
       <div className="flex-center py-3 gap-3 flex-wrap">
         {appearanceCategory.map((item) => (
-          <button
+          <button key={item}
             className={`btn text-xs ${
               category === item ? "btn-active" : "bg-orange-100 text-primary"
             }`}

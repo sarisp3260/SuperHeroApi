@@ -34,17 +34,6 @@ const Home = () => {
         setFiltered(data);
       }
     }, [search, data]);
-
-  /* useEffect(() => {
-    if (filterPower != []) {
-      console.log(
-        data?.map((h)=>h.powerstats).filter((heros) =>
-        heros.category
-        ))
-      } else {
-        setFilterPower(data);
-      }
-    }, [filterPower, data]); */
     
     useEffect(() => {
       const endOffset = itemOffset + itemsPerPage;
@@ -73,14 +62,7 @@ const Home = () => {
             <span className="text-xl">Hero not found, try again</span>
           </div>
         }
-
-        <div className={`flex items-center flex-col lg:flex-row ${search == "" ? "justify-between": "justify-end"}`}>
-          {search == "" &&
-          <div className="flex-center gap-4 flex-wrap">
-            {powerCategory.map((power) =>(
-              <button key={power} className={`btn btn-warning text-xs ${category === power ? "btn-warning" : "btn-outline"}`} onClick={()=>setCategory(power)}>{power}</button>
-            ))}
-          </div>}
+        
           <ReactPaginate
           previousLabel={"Prev"}
           nextLabel={"Next"}
@@ -97,7 +79,6 @@ const Home = () => {
           nextLinkClassName="btn btn-ghost hover:btn-warning text-xs duration-500"
           activeLinkClassName="text-white"
           />
-        </div>
 
         {error && (
           <div className="flex-center gap-3 text-2xl">
